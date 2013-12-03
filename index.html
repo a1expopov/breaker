@@ -1,4 +1,35 @@
 <html>
-<head></head>
+<head>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+<script>
+$(function() {
+  $("#search").autocomplete({
+    source: function(req, res) {
+      $.ajax({
+        url: "/suggest",
+        data: {
+          company: req.term
+        },
+        success: function(data) {
+          res($.map(JSON.parse(data), function(items) {
+            return items.join(":");
+          }));
+        }
+      });
+    }
+  });
+});
+</script>
+</head>
 <body>
-
+<div id="human">
+  <input type="text" placeholder="first name">
+  <input type="text" placeholder="last name">
+</div>
+<div id="domain">
+  <input type="text" id="search" placeholder="domain">
+  <input type="submit" value="try">
+</div>
+</body>
+</html>
