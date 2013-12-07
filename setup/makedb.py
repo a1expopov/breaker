@@ -25,7 +25,7 @@ with open(sys.argv[1]) as fp:
 
     server.zadd("raw:mail:{}".format(domain), row['email'], 0)
 
-    for i in range(len(domain) - 1):
+    for i in range(len(domain)):
       prefix = domain[0:(i + 1)]
       server.zadd("autocomplete", prefix, 0)
     server.zadd("autocomplete", domain + "*", 0)   

@@ -38,9 +38,9 @@ function queryMatches(query, callback) {
 
   }
 
-  function _query(start) {
+  function _query(start, _preSuggestions) {
 
-    var _preSuggestions = [];
+    var _preSuggestions = _preSuggestions || [];
 
     client.zrange("autocomplete", start, Math.min(start + count - 1, ceil), function(err, matches) {
 
@@ -65,7 +65,7 @@ function queryMatches(query, callback) {
       if (done) {
         _finish(_preSuggestions);
       } else {
-        _query(start + count)
+        _query(start + count, _preSuggestions);
       }
     });
   }
