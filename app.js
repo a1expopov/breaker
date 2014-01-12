@@ -1,13 +1,15 @@
 var http  = require("http")
     , fs  = require("fs")
     , xp  = require("express")
-    , db  = require("./backend")
+    , db  = require("./routes/backend")
 
 var requests = 0;
 var app = xp();
 
+app.use(xp.static(__dirname + "/public"));
+
 app.get("/", function(req, res) {
-  fs.createReadStream(__dirname + "/index.html").pipe(res);
+  fs.createReadStream(__dirname + "/views/index.html").pipe(res);
 });
 
 app.get("/suggest", function(req, res) {

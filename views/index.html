@@ -2,6 +2,8 @@
 <head>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+<link type="stylesheet" href="css/bootstrap.min.css">
+<link type="stylesheet" href="css/bootstrap-responsive.min.css">
 <script>
 $(function() {
   $("#search").autocomplete({
@@ -31,5 +33,13 @@ $(function() {
   <input type="text" id="search" placeholder="domain">
   <input type="submit" value="try">
 </div>
+<form class="form-inline">
+  <div class="controls">
+    <div class="input-append">
+        <input class="span2" type="text"><button class="btn" type="button"><i class="icon-search"></i></button>
+    </div>
+  </div>
+</form>
+<script src="js/bootstrap.min.js"></script>
 </body>
 </html>
